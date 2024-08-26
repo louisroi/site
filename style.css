@@ -65,7 +65,6 @@ body {
     height: auto; /* Hauteur automatique pour ajuster la taille de la boîte */
   /* Cadre transparent */
     border-radius: 20px;
-    backdrop-filter: blur(); /* Effet de flou */
     padding: 30px 30px 50px 30px;
     text-align: center;
     position: relative;
