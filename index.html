@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sukida profile</title>
+    <meta property="og:title" content="Sukida">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://negro.lol/sukida">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="505">
+    <meta property="og:site_name" content="negro.lol">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="~negro.lol~">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="click-here">click to enter...</div>
+    <video id="video-bg" preload="auto" loop>
+        <source src="Experiments Lain - EDIT.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <audio id="background-music" preload="auto" loop>
+        <source src="" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <canvas id="snow"></canvas>
+    <div class="profile-card" id="profile-card">
+        <img src="4e3f702d74c69c9d58fd11dc030156d5.jpg" alt="Profile Picture" class="profile-pic">
+        <h2 id="username" class="rainbow-glow">Sukida</h2>
+        <div class="badges">
+            <img src="role_owner.png" alt="Owner Badge">
+            <img src="icon_discord_mod_animated.gif" alt="Mod Badge">
+            <img src="blue_Dev.png" alt="Dev Badge">
+        </div>
+        <p id="dynamic-text"></p> <!-- Élément de texte dynamique -->
+        <div class="status">
+            <div>
+                <p id="user-name" class="rainbow-glow">@sukida</p>
+            </div>
+        </div>
+        <div class="icons">
+            <a href="https://discord.com/users/1272731242588016764" target="blank"><img src="Discord_White_Logo.png" alt="Discord" class="discord-icon"></a>
+            <a href="https://github.com/Sukidadev" target="blank"><img src="github.png" alt="GitHub" class="github-icon"></a>
+            <a ="" target=""><img src="" alt="" class="telegram-icon"></a>
+            <a ="" target=""><img src="" alt="" class="other-icon"></a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoBg = document.getElementById('video-bg');
+            const backgroundMusic = document.getElementById('background-music');
+            const clickHere = document.getElementById('click-here');
+            const profileCard = document.getElementById('profile-card');
+
+            // Charger la vidéo et la musique
+            videoBg.load();
+            backgroundMusic.load();
+
+            const messages = [
+                "Loin de moi",
+                "Près de toi"
+            ];
+            let messageIndex = 0;
+            let charIndex = 0;
+            const dynamicTextElement = document.getElementById('dynamic-text');
+            const typingSpeed = 100;
+            const erasingSpeed = 50;
+            const newTextDelay = 2000;
+
+            function type() {
+                if (charIndex < messages[messageIndex].length) {
+                    dynamicTextElement.textContent += messages[messageIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, typingSpeed);
+                } else {
+                    setTimeout(erase, newTextDelay);
+                }
+            }
+
+            function erase() {
+                if (charIndex > 0) {
+                    dynamicTextElement.textContent = messages[messageIndex].substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, erasingSpeed);
+                } else {
+                    messageIndex++;
+                    if (messageIndex >= messages.length) messageIndex = 0;
+                    setTimeout(type, typingSpeed + 1100);
+                }
+            }
+
+            if (messages.length) setTimeout(type, newTextDelay + 250);
+
+            // Synchroniser la lecture de la vidéo et de la musique
+            const playMedia = () => {
+                videoBg.currentTime = 0;
+                backgroundMusic.currentTime = 0;
+                videoBg.play();
+                backgroundMusic.play();
+            };
+
+            clickHere.addEventListener('click', () => {
+                clickHere.classList.add('hidden');
+                setTimeout(() => {
+                    clickHere.style.display = 'none';
+                    profileCard.classList.add('slide-down');
+                }, 1000);
+
+                // Jouer la musique et la vidéo après la disparition du texte
+                setTimeout(() => {
+                    playMedia();
+                }, 1000);
+            });
+
+            // Simuler une activité actuelle (par exemple, "Coding" ou "Reading")
+            const currentActivity = "Coding"; // Changez cette valeur pour simuler différentes activités
+
+            // Fetch user data from server and update the profile info
+            fetch('http://localhost:3000/user-profile')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.id) {
+                        document.getElementById('user-profile-pic').src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+                        document.getElementById('user-name').textContent = data.username;
+                        document.getElementById('user-activity').textContent = currentActivity ? `I am currently ${currentActivity.toLowerCase()}` : 'Currently not doing anything';
+                    }
+                })
+                .catch(error => console.error('Error fetching user data:', error));
+        });
+    </script>
+    <script src="snow.js"></script>
+</body>
+</html>
