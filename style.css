@@ -29,18 +29,50 @@ body {
     pointer-events: none; /* Pour que la neige ne bloque pas les interactions avec le contenu */
 }
 .profile-card {
+    --backgroundColor: #080808;
+    --joinStatus: rgba(255, 255, 255, 0.65);
+    --avatarBorder: 2px solid rgba(27, 27, 27, 0.4);
+    --containerColor: rgba(27, 27, 27, 0.29);
+    --containerBlur: 0px;
+    --containerGradient: linear-gradient(25deg, rgba(0, 0, 0, 0.29), rgba(13, 13, 13, 0.29));
+    --containerRadius: 20px;
+    --containerWidth: 38rem;
+    --containerPadding: 35px 15px;
+    --volumeBackgroundcolor: rgba(27, 27, 27, 0.29);
+    --volumeBorder: 2px solid rgba(27, 27, 27, 0.261);
+    --colorUsernameGlow: 0px 0px 16.5px #ffffff;
+    --usernameEffects: url(https://assets.guns.lol/sparkle_black.gif);
+    --buttonBackground: rgba(255, 255, 255, 0.22);
+    --buttonBorder: 2px solid rgba(255, 255, 255, 0.12);
+    --buttonRadius: 12px;
+    --buttonAlign: center;
+    --buttonBackgroundHover: rgba(255, 255, 255, 0.32);
+    --buttonBorderHover: 2px solid rgba(255, 255, 255, 0.25);
+    --buttonUrlColor: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(var(--containerBlur));
+    -webkit-backdrop-filter: blur(var(--containerBlur));
+    background-color: var(--containerColor);
+    background-image: var(--containerGradient);
+    background-origin: border-box;
+    border: var(--containerBorder);
+    border-radius: var(--containerRadius);
+    padding: var(--containerPadding);
+    position: fixed;
+    transition: opacity 1s,margin-bottom .6s;
+      --rt-color-dark: #0f0f0f !important;
+    --rt-opacity: 1 !important;
     width: 450px;
     height: auto; /* Hauteur automatique pour ajuster la taille de la boîte */
-    background: rgba(255, 255, 255, 0.1); /* Cadre transparent */
+  /* Cadre transparent */
     border-radius: 20px;
-    backdrop-filter: blur(10px); /* Effet de flou */
+    backdrop-filter: blur(); /* Effet de flou */
     padding: 30px 30px 50px 30px;
     text-align: center;
     position: relative;
     z-index: 10; /* Assurer que le contenu de la carte soit au-dessus de la neige */
     transform: translateY(-100vh); /* Positionner en dehors de l'écran */
     transition: transform 1s ease-in-out;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Ajouter une bordure légère */
+   /* Ajouter une bordure légère */
 }
 .profile-card img.profile-pic {
     width: 150px;
