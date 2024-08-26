@@ -1,0 +1,157 @@
+body {
+    cursor: url(https://r2.guns.lol/ab295c53-d4f7-4c6d-a9e5-99143dd4fe51.cur) 16 16, auto !important;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: black; /* Arrière-plan noir */
+    margin: 0;
+    color: white; /* Couleur du texte en blanc */
+    overflow: hidden; /* Pour éviter les barres de défilement */
+    flex-direction: column;
+}
+#video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Assurez-vous que la vidéo est derrière le contenu */
+}
+#snow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Pour que la neige ne bloque pas les interactions avec le contenu */
+}
+.profile-card {
+    width: 450px;
+    height: auto; /* Hauteur automatique pour ajuster la taille de la boîte */
+    background: rgba(255, 255, 255, 0.1); /* Cadre transparent */
+    border-radius: 20px;
+    backdrop-filter: blur(10px); /* Effet de flou */
+    padding: 30px 30px 50px 30px;
+    text-align: center;
+    position: relative;
+    z-index: 10; /* Assurer que le contenu de la carte soit au-dessus de la neige */
+    transform: translateY(-100vh); /* Positionner en dehors de l'écran */
+    transition: transform 1s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Ajouter une bordure légère */
+}
+.profile-card img.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    top: -75px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.profile-card h2 {
+    margin-top: 90px;
+    font-size: 28px;
+}
+.profile-card .badges {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.1); /* Cadre transparent */
+    border-radius: 10px;
+    padding: 5px;
+    backdrop-filter: blur(10px); /* Effet de flou */
+    display: inline-block; /* Pour centrer le cadre des badges */
+}
+.profile-card .badges img {
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+}
+.profile-card p {
+    margin: 5px 0;
+}
+.profile-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+.profile-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.profile-info div {
+    text-align: left;
+}
+.profile-card .status img {
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.profile-card .icons {
+    margin-top: 30px;
+}
+.profile-card .icons a {
+    margin: 0 15px;
+    text-decoration: none; /* Supprime la décoration du texte, notamment les tirets du bas */
+}
+.profile-card .icons img {
+    width: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s, filter 0.3s;
+    vertical-align: middle; /* Alignement vertical des images */
+}
+.profile-card .icons .discord-icon {
+    filter: drop-shadow(0 0 15px rgba(114, 137, 218, 0.8));
+}
+.profile-card .icons .github-icon {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+}
+.profile-card .icons .telegram-icon {
+    filter: drop-shadow(0 0 15px rgba(0, 136, 204, 0.8));
+}
+.profile-card .icons .other-icon {
+    filter: drop-shadow(0 0 15px rgba(102, 102, 102, 0.8));
+}
+.profile-card .icons img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1));
+}
+#click-here {
+    font-family: cursive;
+    font-size: 2rem;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(0,0,0,.775);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transition: .75s ease;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    width: 100%;
+    z-index: 9999;
+}
+
+.hidden {
+    opacity: 0;
+}
+.slide-down {
+    transform: translateY(0);
+}
+@keyframes rainbow-glow {
+    100% {  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073, 0 0 60px #fff,0 0 50px #fff,0 0 40px #fff,0 0 30px #fff,0 0 20px #fff; }
+}
+
+.rainbow-glow {
+    animation: rainbow-glow 1.5s infinite;
+}
